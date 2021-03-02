@@ -5,43 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Proj_Jr_Web_Dev</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand mr-0 mr-md-2" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/img/logo.png" />
                 </a>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary">Cadastre-se</button>
-                    <button type="button" class="btn btn-light">Login</button>
-                </div>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                    </ul>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <div class="btn-size-lg">
+                        <button class="btn btn-primary btn-block" type="button">Cadastre-se</button>
+                    </div>
+                    <div class="btn-size-md">
+                        <button class="btn btn-light btn-block" type="button">Login</button>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container ">
+        <main role="main" class="pb-1">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Proj_Jr_Web_Dev - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer>
+        <div class="container footer">
+            <div class="align-div">
+                <p class="text-footer align-div">Faça parte você também</p>
+            </div>
+            <div class="align-div">
+                <button class="btn btn-primary btn-size-xlg btn-block" type="button">Cadastre-se</button>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $.ajax({
+                method: "GET",
+                url: "/Home/ListarVagas",
+                dataType: 'Json',
+                success: function (data) {
+                    var tabela = $("#listaVagas");
+                    var rows = "";
+                    rows += "<tbody class='row'>";
+                    for (var i in data) {
+                        rows += "<tr class='col-6 col-md-3'>";
+                        rows += "<td>";
+                        rows += " <div class='titulo-vaga'>" + data[i].titulo + "</div>";
+                        rows += " <div class='text-vaga'>" + "<i class='bi bi-geo-alt-fill'></i> " + data[i].cidade + "</div>";
+                        rows += " <div class='text-vaga'>" + "<i class='bi bi-cash'></i> " + data[i].salario.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) + "</div>";
+                        rows += "</td>";
+                        rows += "</tr>";
+                    }
+                    rows += "</tbody>";
+                    tabela.append(rows);
+                }
+            });
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

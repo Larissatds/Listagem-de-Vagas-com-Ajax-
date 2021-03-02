@@ -18,15 +18,35 @@ namespace Proj_Jr_Web_Dev.Controllers
             _logger = logger;
         }
 
+        #region Home
         public IActionResult Index()
         {
             return View();
         }
+        #endregion
 
+        #region ListarVagas
+        [HttpGet]
+        public JsonResult ListarVagas()
+        {
+            int qtdVagas = 8;
+            List<VagasViewModel> vagas = new List<VagasViewModel>();
+
+            for (var i = 0; i < qtdVagas; i++)
+            {
+                vagas.Add(new VagasViewModel() { Titulo = "Vendedor(a)", Cidade = "Sorocaba", Salario = 1700 });
+            }
+
+            return Json(vagas);
+        }
+        #endregion
+
+        #region Error
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        #endregion
     }
 }

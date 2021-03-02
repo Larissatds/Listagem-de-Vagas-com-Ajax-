@@ -1,6 +1,23 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+@font-face {
+    font-family: Roboto-Condensed-Regular;
+    src: url('../fonts/RobotoCondensed-Regular.ttf');
+}
+
+@font-face {
+    font-family: Roboto-Condensed-Light;
+    src: url('../fonts/RobotoCondensed-Light.ttf');
+}
+
+@font-face {
+    font-family: Roboto-Condensed-Bold;
+    src: url('../fonts/RobotoCondensed-Bold.ttf');
+}
+
+
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -9,30 +26,127 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #575757;
+}
+
+p {
+    color: #575757;
+}
+
+div h1 {
+    color: #575757;
+    text-transform: uppercase;
+    font-family: Roboto-Condensed-Light;
+    font-size: 18px;
+}
+
+div h2 {
+    color: #575757;
+    text-transform: uppercase;
+    font-family: Roboto-Condensed-Bold;
+    font-size: 40px;
+}
+
+
+div .btn-principal {
+    margin-top: 50px;
+}
+
+.row {
+    margin: auto;
+}
+
+.col-3 {
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    color: #fff;
+    font-family: Roboto-Condensed-Regular;
+}
+
+.table .titulo-vaga {
+    font-size: 18px;
+}
+
+.table .text-vaga {
+    font-size: 12px;
+}
+
+.div-principal {
+    background: url(../img/destaque.png);
+    background-repeat: no-repeat;
+    background-position: right -45px;
+    width: 100%;
+    height: 75vh;
+    margin-bottom: 1%;
+}
+
+.div-principal div p{
+    font-family: Roboto-Condensed-Regular;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.text-principal {
+    margin-top: 130px;
+}
+
+.text-footer {
+    font-size: 24px;
+    font-family: Roboto-Condensed-Regular;
+}
+
+.align-div {
+    display: flex;
+    justify-content: center;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1888ff;
+    border-color: #1888ff;
+    text-transform: uppercase;
+    font-family: Roboto-Condensed-Regular;
+}
+
+.btn-light {
+    color: #575757;
+    background-color: #fff;
+    border-color: #fff;
+    text-transform: uppercase;
+    font-family: Roboto-Condensed-Regular;
+}
+
+.btn-size-xlg {
+    width: 190px;
+    height: 45px;
+}
+
+.btn-size-lg {
+    width: 150px;
+}
+
+.btn-size-md {
+    width: 120px;
+}
+
+.btn-size-md:hover > .btn-light {
+    background-color: #fff;
+    border-color: #fff;
+    color: #007cff;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
 html {
   font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
 }
 
 .border-top {
@@ -51,21 +165,67 @@ button.accept-policy {
   line-height: inherit;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    margin-bottom: 300px;
 }
+
+.blue-div {
+    background-color: #007cff;
+    margin-left: -1%;
+    margin-right: -1%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.blue-div-text {
+    color: #fff;
+    font-size: 24px;
+    font-family: Roboto-Condensed-Regular;
+    text-align: center;
+}
+
+footer {
+    margin-top: -50px;
+}
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    margin-bottom: 100px;
+}
+
+.container {
+    max-width: 1350px;
+}
+
+main {
+    margin-bottom: 1px;
+    padding-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .div-principal {
+        background-image: none;
+        background-color: #fff;
+    }
+}
+
+@media (min-height: 900px) {
+    .div-principal {
+        height: 35vh;
+    }
 }
